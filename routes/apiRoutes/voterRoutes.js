@@ -48,7 +48,7 @@ router.post("/voter", ({body}, res) => {
                 VALUES (?,?,?)`;
     const params = [body.first_name, body.last_name, body.email];
 
-    db.query(sql, params, (err, results) => {
+    db.query(sql, params, (err, result) => {
         if(err){
             res.status(400).json({error: err.message});
             return;
@@ -93,7 +93,7 @@ router.put("/voter/:id", (req, res) => {
 });
 
 //delete a voter
-router.delete("voter/:id", (req, res) => {
+router.delete("/voter/:id", (req, res) => {
     const sql = `DELETE FROM voters 
                 WHERE id = ?`;
     //in db query i use req.params.id instead of making a params variable to save space
