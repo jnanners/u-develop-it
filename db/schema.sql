@@ -1,6 +1,7 @@
 -- candidates must be dropped first due to foreign key constraint 
 DROP TABLE IF EXISTS candidates;
 DROP TABLE IF EXISTS parties;
+DROP TABLE IF EXISTS voters;
 
 -- parties must be created first due to foreign key constraint
 CREATE TABLE parties (
@@ -16,4 +17,12 @@ CREATE TABLE candidates (
     party_id INTEGER,
     industry_connected BOOLEAN NOT NULL,
     CONSTRAINT fk_party FOREIGN KEY (party_id) REFERENCES parties(id) ON DELETE SET NULL
+);
+
+CREATE TABLE voters (
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(30) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
