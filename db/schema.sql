@@ -32,7 +32,7 @@ CREATE TABLE votes (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     voter_id INTEGER NOT NULL,
     candidate_id INTEGER NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     -- constraint for unique voter
     CONSTRAINT uc_voter UNIQUE (voter_id),
     -- constraint for fake voter. on delete cascade deletes the entire row 
